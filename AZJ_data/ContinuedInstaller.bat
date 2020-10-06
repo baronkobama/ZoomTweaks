@@ -46,7 +46,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\FirstPD.vbs" Echo;	For i = 0 to 50
  >> "%out%\FirstPD.vbs" Echo;		WshShell.SendKeys(chr(175))
  >> "%out%\FirstPD.vbs" Echo;	Next
- >> "%out%\FirstPD.vbs" Echo;	WshShell.run "CMD /C start opera.exe " ^& URL ^&"",0,False
+ >> "%out%\FirstPD.vbs" Echo;	WshShell.run "CMD /C start " ^& URL ^&"",0,False
  >> "%out%\FirstPD.vbs" Echo;Case vbNo
  >> "%out%\FirstPD.vbs" Echo;	Set objShell = WScript.CreateObject("WScript.Shell")
  >> "%out%\FirstPD.vbs" Echo;	objShell.Popup "Cancelled... returning to background.", TIMEOUT, POPUP_TITLE
@@ -66,7 +66,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\SecondPD.vbs" Echo;	For i = 0 to 50
  >> "%out%\SecondPD.vbs" Echo;		WshShell.SendKeys(chr(175))
  >> "%out%\SecondPD.vbs" Echo;	Next
- >> "%out%\SecondPD.vbs" Echo;	WshShell.run "CMD /C start opera.exe " ^& URL ^&"",0,False
+ >> "%out%\SecondPD.vbs" Echo;	WshShell.run "CMD /C start " ^& URL ^&"",0,False
  >> "%out%\SecondPD.vbs" Echo;Case vbNo
  >> "%out%\SecondPD.vbs" Echo;	Set objShell = WScript.CreateObject("WScript.Shell")
  >> "%out%\SecondPD.vbs" Echo;	objShell.Popup "Cancelled... returning to background.", TIMEOUT, POPUP_TITLE
@@ -86,7 +86,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\ThirdPD.vbs" Echo;	For i = 0 to 50
  >> "%out%\ThirdPD.vbs" Echo;		WshShell.SendKeys(chr(175))
  >> "%out%\ThirdPD.vbs" Echo;	Next
- >> "%out%\ThirdPD.vbs" Echo;	WshShell.run "CMD /C start opera.exe " ^& URL ^&"",0,False
+ >> "%out%\ThirdPD.vbs" Echo;	WshShell.run "CMD /C start " ^& URL ^&"",0,False
  >> "%out%\ThirdPD.vbs" Echo;Case vbNo
  >> "%out%\ThirdPD.vbs" Echo;	Set objShell = WScript.CreateObject("WScript.Shell")
  >> "%out%\ThirdPD.vbs" Echo;	objShell.Popup "Cancelled... returning to background.", TIMEOUT, POPUP_TITLE
@@ -106,7 +106,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\FourthPD.vbs" Echo;	For i = 0 to 50
  >> "%out%\FourthPD.vbs" Echo;		WshShell.SendKeys(chr(175))
  >> "%out%\FourthPD.vbs" Echo;	Next
- >> "%out%\FourthPD.vbs" Echo;	WshShell.run "CMD /C start opera.exe " ^& URL ^&"",0,False
+ >> "%out%\FourthPD.vbs" Echo;	WshShell.run "CMD /C start " ^& URL ^&"",0,False
  >> "%out%\FourthPD.vbs" Echo;Case vbNo
  >> "%out%\FourthPD.vbs" Echo;	Set objShell = WScript.CreateObject("WScript.Shell")
  >> "%out%\FourthPD.vbs" Echo;	objShell.Popup "Cancelled... returning to background.", TIMEOUT, POPUP_TITLE
@@ -126,7 +126,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\FifthPD.vbs" Echo;	For i = 0 to 50
  >> "%out%\FifthPD.vbs" Echo;		WshShell.SendKeys(chr(175))
  >> "%out%\FifthPD.vbs" Echo;	Next
- >> "%out%\FifthPD.vbs" Echo;	WshShell.run "CMD /C start opera.exe " ^& URL ^&"",0,False
+ >> "%out%\FifthPD.vbs" Echo;	WshShell.run "CMD /C start " ^& URL ^&"",0,False
  >> "%out%\FifthPD.vbs" Echo;Case vbNo
  >> "%out%\FifthPD.vbs" Echo;	Set objShell = WScript.CreateObject("WScript.Shell")
  >> "%out%\FifthPD.vbs" Echo;	objShell.Popup "Cancelled... returning to background.", TIMEOUT, POPUP_TITLE
@@ -146,7 +146,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\SixthPD.vbs" Echo;	For i = 0 to 50
  >> "%out%\SixthPD.vbs" Echo;		WshShell.SendKeys(chr(175))
  >> "%out%\SixthPD.vbs" Echo;	Next
- >> "%out%\SixthPD.vbs" Echo;	WshShell.run "CMD /C start opera.exe " ^& URL ^&"",0,False
+ >> "%out%\SixthPD.vbs" Echo;	WshShell.run "CMD /C start " ^& URL ^&"",0,False
  >> "%out%\SixthPD.vbs" Echo;Case vbNo
  >> "%out%\SixthPD.vbs" Echo;	Set objShell = WScript.CreateObject("WScript.Shell")
  >> "%out%\SixthPD.vbs" Echo;	objShell.Popup "Cancelled... returning to background.", TIMEOUT, POPUP_TITLE
@@ -166,7 +166,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\SeventhPD.vbs" Echo;	For i = 0 to 50
  >> "%out%\SeventhPD.vbs" Echo;		WshShell.SendKeys(chr(175))
  >> "%out%\SeventhPD.vbs" Echo;	Next
- >> "%out%\SeventhPD.vbs" Echo;	WshShell.run "CMD /C start opera.exe " ^& URL ^&"",0,False
+ >> "%out%\SeventhPD.vbs" Echo;	WshShell.run "CMD /C start " ^& URL ^&"",0,False
  >> "%out%\SeventhPD.vbs" Echo;Case vbNo
  >> "%out%\SeventhPD.vbs" Echo;	Set objShell = WScript.CreateObject("WScript.Shell")
  >> "%out%\SeventhPD.vbs" Echo;	objShell.Popup "Cancelled... returning to background.", TIMEOUT, POPUP_TITLE
