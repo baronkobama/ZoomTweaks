@@ -76,4 +76,8 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 currDir = fso.GetParentFolderName(WScript.ScriptFullName)
 Set oShell = WScript.CreateObject("WScript.Shell")
 oShell.run "CMD /C start "& currDir &"\ContinuedInstaller.bat"
+<<<<<<< HEAD
 Set oShell = Nothing
+=======
+Set oShell = Nothing
+>>>>>>> testing
