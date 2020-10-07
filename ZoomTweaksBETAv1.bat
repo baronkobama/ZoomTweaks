@@ -1,6 +1,6 @@
 @echo off
 
-if exist C:\ZoomScripts (start %~dp0\AZJ_data\ContinuedInstaller.bat) else goto Setup
+if exist C:\ZoomScripts (start %~dp0\ZT_data\ContinuedInstaller.bat) else goto Setup
 
 :Setup
 REM ### Administrator Permission Prompt
@@ -22,5 +22,5 @@ REM ### Making Necessary Files
  echo.>"C:\ZoomScripts\Classes\SeventhPD.vbs"
 
 REM ### Entering Registerer Script
-wscript "%~dp0..\AutoZoomJoiner\AZJ_data\InputRegister.vbs"
+wscript "%~dp0..\ZoomTweaks\ZT_data\InputRegister.vbs"
 exit

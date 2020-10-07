@@ -22,49 +22,49 @@ UserInput = InputBox( "Enter your 7th Period Zoom Link" )
 strInput7 = UserInput
 
 Const TIMEOUT = 3
-Const POPUP_TITLE = "AutoZoomJoinerv2"
+Const POPUP_TITLE = "ZoomTweaksBETAV1"
 
 dim filesys, filetxt
 Set filesys = CreateObject("Scripting.FileSystemObject")
 Set filetxt = filesys.OpenTextFile("C:\ZoomScripts\Classes\FirstPD.vbs", 8, True)
 filetxt.WriteLine("Const TIMEOUT = 3")
-filetxt.WriteLine("Const POPUP_TITLE = """ & "AutoZoomJoinerv2" & """")
+filetxt.WriteLine("Const POPUP_TITLE = """ & "ZoomTweaksBETAV1" & """")
 filetxt.WriteLine("URL1 = """ & strInput1 & """")
 filetxt.WriteBlankLines(1)
 
 Set filetxt = filesys.OpenTextFile("C:\ZoomScripts\Classes\SecondPD.vbs", 8, True)
 filetxt.WriteLine("Const TIMEOUT = 3")
-filetxt.WriteLine("Const POPUP_TITLE = """ & "AutoZoomJoinerv2" & """")
+filetxt.WriteLine("Const POPUP_TITLE = """ & "ZoomTweaksBETAV1" & """")
 filetxt.WriteLine("URL2 = """ & strInput2 & """")
 filetxt.WriteBlankLines(1)
 
 Set filetxt = filesys.OpenTextFile("C:\ZoomScripts\Classes\ThirdPD.vbs", 8, True)
 filetxt.WriteLine("Const TIMEOUT = 3")
-filetxt.WriteLine("Const POPUP_TITLE = """ & "AutoZoomJoinerv2" & """")
+filetxt.WriteLine("Const POPUP_TITLE = """ & "ZoomTweaksBETAV1" & """")
 filetxt.WriteLine("URL3 = """ & strInput3 & """")
 filetxt.WriteBlankLines(1)
 
 Set filetxt = filesys.OpenTextFile("C:\ZoomScripts\Classes\FourthPD.vbs", 8, True)
 filetxt.WriteLine("Const TIMEOUT = 3")
-filetxt.WriteLine("Const POPUP_TITLE = """ & "AutoZoomJoinerv2" & """")
+filetxt.WriteLine("Const POPUP_TITLE = """ & "ZoomTweaksBETAV1" & """")
 filetxt.WriteLine("URL4 = """ & strInput4 & """")
 filetxt.WriteBlankLines(1)
 
 Set filetxt = filesys.OpenTextFile("C:\ZoomScripts\Classes\FifthPD.vbs", 8, True)
 filetxt.WriteLine("Const TIMEOUT = 3")
-filetxt.WriteLine("Const POPUP_TITLE = """ & "AutoZoomJoinerv2" & """")
+filetxt.WriteLine("Const POPUP_TITLE = """ & "ZoomTweaksBETAV1" & """")
 filetxt.WriteLine("URL5 = """ & strInput5 & """")
 filetxt.WriteBlankLines(1)
 
 Set filetxt = filesys.OpenTextFile("C:\ZoomScripts\Classes\SixthPD.vbs", 8, True)
 filetxt.WriteLine("Const TIMEOUT = 3")
-filetxt.WriteLine("Const POPUP_TITLE = """ & "AutoZoomJoinerv2" & """")
+filetxt.WriteLine("Const POPUP_TITLE = """ & "ZoomTweaksBETAV1" & """")
 filetxt.WriteLine("URL6 = """ & strInput6 & """")
 filetxt.WriteBlankLines(1)
 
 Set filetxt = filesys.OpenTextFile("C:\ZoomScripts\Classes\SeventhPD.vbs", 8, True)
 filetxt.WriteLine("Const TIMEOUT = 3")
-filetxt.WriteLine("Const POPUP_TITLE = """ & "AutoZoomJoinerv2" & """")
+filetxt.WriteLine("Const POPUP_TITLE = """ & "ZoomTweaksBETAV1" & """")
 filetxt.WriteLine("URL7 = """ & strInput7 & """")
 filetxt.WriteBlankLines(1)
 
