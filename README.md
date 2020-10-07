@@ -6,4 +6,5 @@ Planned additions:
 - Class Amount Configuration
 - Weekend Toggle
 - Script Toggle
+- Mute/Unmute Zoom Toggle
 - Chat Notifications?
