@@ -173,7 +173,7 @@ Set "out=C:\ZoomScripts\Classes"
  >> "%out%\SeventhPD.vbs" Echo;End Select
  
 REM ### Scheduling Background Registry Process
-SchTasks /Create /F /RL HIGHEST /SC DAILY /ST 07:18 /TN "ZoomAutojoiner" /TR "C:\ZoomScripts\BackgroundScript\BackgroundProcess.vbs" >nul
+SchTasks /Create /F /RL HIGHEST /SC DAILY /ST 07:18 /TN "ZoomTweaksv1-BATCH" /TR "C:\ZoomScripts\BackgroundScript\BackgroundProcess.vbs" >nul
 
 goto Finished
 
