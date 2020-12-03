@@ -1,10 +1,4 @@
-# ZoomTweaksBETAv1
+# ZoomTweaksv1-BATCH
  
-This script is written for specific times for specific classes. This is unable to be configured at the moment.
-Planned additions:
-- Time Configuration
-- Class Amount Configuration
-- Weekend Toggle
-- Script Toggle
-- Mute/Unmute Zoom Toggle
-- Chat Notifications?
+This version of ZoomTweaks is temporary and will be replaced by ZoomTweaksv2-PY
+(Will be migrated to non-default branch upon finishing v2-PY rewrite)
