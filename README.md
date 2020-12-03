@@ -1,6 +1,6 @@
-# ZoomTweaksBETAv2
+# ZoomTweaksv2-PY
  
-This script is written for specific times for specific classes. This is unable to be configured at the moment.
+Currently working on implementing a system for GUI input for specific times.
 Planned additions:
 - Time Configuration
 - Class Amount Configuration
@@ -8,3 +8,5 @@ Planned additions:
 - Script Toggle
 - Mute/Unmute Zoom Toggle
 - Chat Notifications?
+- 2 Modes (Auto-join + bypass camera prompt / Require confirmation & no bypass)
+- (MOBILE TERMINAL BRO???)
