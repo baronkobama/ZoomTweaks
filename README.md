@@ -1,6 +1,12 @@
-# ZoomTweaks-PY-v2.0.0-ALPHA
- 
-Currently working on creating the system for joining zoom classes.
+# ZoomTweaks-PY-v2.0.1-ALPHA
+
+Dependencies:
+- PySimpleGUI (pip install PySimpleGUI) 
+
+Currently working on adding a logger and restructuring.
+(To use script run setup.py on first run and main.py if any issues arise after setup)
+
+
 Planned Additions:
 - Script Toggle
 - Mute/Unmute Zoom Toggle
