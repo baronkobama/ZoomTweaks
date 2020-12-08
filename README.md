@@ -1,8 +1,7 @@
-# ZoomTweaksv2-PY
+# ZoomTweaks-PY-v2.0.0-ALPHA
  
 Currently working on creating the system for joining zoom classes.
-Planned additions:
-- Weekend Toggle
+Planned Additions:
 - Script Toggle
 - Mute/Unmute Zoom Toggle
 - Chat Notifications?
@@ -10,3 +9,6 @@ Planned additions:
 - (MOBILE TERMINAL BRO???)
 - Verbose Error/Exception Handling
 - Debug logger
+
+Finished Additions:
+- Not running on weekend
