@@ -1,4 +1,4 @@
-# Zoom Tweaks BETA - Utility Container
+# Zoom Tweaks - Utility Container
 
 # Standard Libraries
 from os import getcwd, mkdir, path, system

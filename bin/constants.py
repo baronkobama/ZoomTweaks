@@ -1,4 +1,4 @@
-# Zoom Tweaks BETA - Constants Container
+# Zoom Tweaks - Constants Container
 
 # Standard Libraries
 from os import getcwd, path

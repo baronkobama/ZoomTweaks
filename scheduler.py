@@ -1,4 +1,4 @@
-# Zoom Tweaks BETA - Scheduler Container
+# Zoom Tweaks - Scheduler Container
 
 # Standard Libraries
 import time

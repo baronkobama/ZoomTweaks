@@ -1,4 +1,4 @@
-# Zoom Tweaks BETA - Main Container
+# Zoom Tweaks - Main Container
 
 # Standard Libraries
 from os import system, getcwd

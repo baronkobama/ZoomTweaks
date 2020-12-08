@@ -1,7 +1,8 @@
-# ZoomTweaks-PY-v2.0.1-ALPHA
+# ZoomTweaks-PY-v2.0.2-ALPHA
 
 Dependencies:
 - PySimpleGUI (pip install PySimpleGUI) 
+- schedule (pip install schedule)
 
 Currently working on adding a logger and restructuring.
 (To use script run setup.py on first run and main.py if any issues arise after setup)
