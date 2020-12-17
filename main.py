@@ -145,11 +145,7 @@ try:
     while True:
         now = datetime.now()
         current_time = now.strftime('%H:%M')
-        log.debug("Checking times...")
         for key, value in joiner_dict.items():
-            log.debug("Checking keys")
-            print(key, value)
-            print(current_time)
             if key == current_time:
                 log.debug("Caught proper time, starting link")
                 try:

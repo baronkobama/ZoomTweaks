@@ -1,4 +1,4 @@
-# ZoomTweaks-PY-v2.2.0-ALPHA
+# ZoomTweaks-PY-v2.2.1-ALPHA
 
 Dependencies:
 - Windows OS (win32api is used in the script which is not supported by other operating systems)
@@ -17,6 +17,7 @@ Planned Additions:
 - 2 Modes (Auto-join + bypass camera prompt / Require confirmation & no bypass)
 - (MOBILE TERMINAL FOR SENDING MESSAGES BRO???)
 - Specific day toggle (able to toggle what days to run on)
+- Rework time system (time in which main.py launches from scheduler and when main.py pushes to scheduler)
 
 Finished Additions:
 - Debug logger (logger to send debugging info to a text file)

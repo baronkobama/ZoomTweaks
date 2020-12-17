@@ -14,7 +14,8 @@ import PySimpleGUI as sg
 from bin.logger import log, lfile
 
 # Constants
-cache_directory = path.join(getcwd(), "cache")
+file_path = str(__file__).strip(r"bin\utils.py").replace("ZoomTweak", "ZoomTweaks")
+cache_directory = path.join(file_path, "cache")
 class_amount_file = path.join(cache_directory, "classAmount.json")
 class_time_file = path.join(cache_directory, "classTimes.json")
 class_link_file = path.join(cache_directory, "classLinks.json")
@@ -39,7 +40,7 @@ for drive in drives:
     else:
         continue
 startup_file = path.join(startup_path, "ZoomTweaks.bat")
-file_path = path.join((path.dirname(path.realpath(__file__)).strip(r"\bin")), "scheduler.py")
+file_path = path.join((path.dirname(path.realpath(__file__)).strip(r"\bin")), "main.py")
 
 # Functions
 
@@ -151,7 +152,6 @@ def add_to_startup():
             python_directories.remove(directory)
             log.debug("Removing invalid python directory")
     python_dir = python_directories[0]
-    python_dir = python_dir.replace("python.exe", "pythonw.exe")
     with open(startup_file, "w+") as f:
         f.writelines("@echo off\n")
         f.writelines(f'"{python_dir}" "{file_path}"\n')
