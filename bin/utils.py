@@ -4,11 +4,14 @@
 from datetime import datetime
 from getpass import getuser
 from os import getcwd, mkdir, path, system
+from sys import argv
 import json
 import subprocess
 import win32api
 # External Libraries
 import PySimpleGUI as sg
+# ZoomTweaks-PY (other) Functions
+from bin.logger import log, lfile
 
 # Constants
 cache_directory = path.join(getcwd(), "cache")
@@ -31,18 +34,12 @@ drives = win32api.GetLogicalDriveStrings().split('\000')[:-1]
 for drive in drives:
     startup_path = rf'{drive}Users\{getuser()}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
     if path.isdir(startup_path):
+        log.debug(f"Found startup path at: {startup_path}")
         break
     else:
         continue
 startup_file = path.join(startup_path, "ZoomTweaks.bat")
 file_path = path.join((path.dirname(path.realpath(__file__)).strip(r"\bin")), "scheduler.py")
-file_path = file_path.split('\\')
-index = -1
-for name in file_path:
-    index += 1
-    if " " in name:
-        file_path[index] = ('"' + name + '"')
-file_path = '\\'.join([str(elem) for elem in file_path])
 
 # Functions
 
@@ -51,11 +48,12 @@ def file_reset(file):
     try:
         with open(file, "w+") as f:
             f.close()
+        log.debug(f"Successfully reset {file}")
     except Exception as exc:
-        print("")
-        print("Caught exception in file_reset()")
-        print("")
-        print(str(exc))
+        log.debug("Caught exception in file_reset()")
+        log.debug(str(exc))
+        print(f"Check {lfile} for more info (debug log)")
+        return False
 
 
 def config_file_check(file):
@@ -63,12 +61,14 @@ def config_file_check(file):
         file_size = path.getsize(file)
         if not file_size > 0:
             # Returns True if file is empty
+            log.debug(f"{file} is empty")
             return True
         else:
             # Returns False if file is not empty
+            log.debug(f"{file} is not empty")
             return False
     except FileNotFoundError:
-        print("Missing file(s) in file check instance")
+        log.debug(f"Missing {file} in file check instance, caught FileNotFoundError")
         pass
 
 
@@ -80,21 +80,25 @@ def retriever(layout, output):
             pass
         else:
             break
+        log.debug("Awaiting input in window")
         event, values = window.read()
         if event == "Ok":
             with open(output, "a+") as cache:
                 json.dump(values, cache)
             window.close()
+            log.debug("Dumped input from window, exiting retriever")
             return True
         elif event == sg.WIN_CLOSED or event == 'Cancel':
             print("Script cancelled.")
             window.close()
+            log.debug("Script was cancelled by user input")
             exit(1)
 
 
 def cache_check():
     try:
         if not path.isdir(cache_directory):
+            log.debug("Couldn't find cache directory, writing dir and files")
             mkdir(cache_directory)
             file_reset(class_amount_file)
             file_reset(class_time_file)
@@ -106,25 +110,30 @@ def cache_check():
                 f.close()
             return True
         elif path.isdir(cache_directory):
+            log.debug("Found cache directory, checking file integrity")
             if not path.isfile(class_amount_file):
+                log.debug("Couldn't find class amount file, writing file")
                 file_reset(class_amount_file)
             if not path.isfile(class_time_file):
+                log.debug("Couldn't find class time file, writing file")
                 file_reset(class_time_file)
             if not path.isfile(class_link_file):
+                log.debug("Couldn't find class link file, writing file")
                 file_reset(class_link_file)
             if not path.isfile(scheduler_config_file):
+                log.debug("Couldn't find scheduler config file, writing file")
                 with open(scheduler_config_file, "w+") as f:
                     f.truncate()
                     # 0 = No startup file ---- 1 = Startup file
                     f.write('{"startup": "0"}')
                     f.close()
+            log.debug("Finished checking file integrity")
             return True
         return True
     except Exception as exc:
-        print("")
-        print("Caught exception in cache_check()")
-        print("")
-        print(str(exc))
+        log.debug("Caught exception in cache_check()")
+        log.debug(str(exc))
+        print(f"Check {lfile} for more info (debug log)")
         return False
 
 
@@ -134,26 +143,46 @@ def add_to_startup():
     for directory in python_directories:
         if 'AppData' not in directory:
             python_directories.remove(directory)
+            log.debug("Removing invalid python directory")
         if 'Microsoft' in directory:
             python_directories.remove(directory)
+            log.debug("Removing invalid python directory")
+        if 'python.exe' not in directory:
+            python_directories.remove(directory)
+            log.debug("Removing invalid python directory")
     python_dir = python_directories[0]
+    python_dir = python_dir.replace("python.exe", "pythonw.exe")
     with open(startup_file, "w+") as f:
         f.writelines("@echo off\n")
         f.writelines(f'"{python_dir}" "{file_path}"\n')
-        f.writelines("pause")
+        f.writelines("exit")
         f.close()
+    log.debug("Wrote startup file")
 
 
 def check_startup_file():
     if path.isfile(startup_file):
+        log.debug("Located startup file")
         return True
     else:
+        log.debug("Could not locate startup file")
         return False
 
 
 def job():
     try:
         system(f"CMD /c python {getcwd()}\\main.py")
+        with open(lfile, "w+") as f:
+            f.truncate()
+            f.close()
+        log.debug("Passing control to main.py")
         exit(0)
     except KeyboardInterrupt:
         pass
+
+
+def proc_init():
+    log.debug("=============")
+    log.debug("=NEW PROCESS=")
+    log.debug("=============")
+    log.debug("Exec file: {0}".format(str(argv)))
