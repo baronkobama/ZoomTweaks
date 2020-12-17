@@ -5,8 +5,8 @@ import time
 # External Libraries
 import schedule
 # Constants
-from bin.constants import (class_amount_file, class_time_file, class_link_file,
-                           scheduler_config_file)
+from bin.utils import (class_amount_file, class_time_file, class_link_file,
+                       scheduler_config_file)
 # ZoomTweaks-PY Functions
 from bin.utils import (config_file_check, job)
 

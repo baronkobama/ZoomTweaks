@@ -4,34 +4,37 @@
 from os import getcwd, system
 import json
 # Constants
-from bin.constants import (scheduler_config_file)
+from bin.utils import scheduler_config_file
 # ZoomTweaks-PY Functions
-from bin.utils import (cache_check, check_reg_key, add_to_startup)
+from bin.utils import (cache_check, check_startup_file, add_to_startup)
 
 
 try:
     if cache_check():
         print("Files & dirs created successfully")
-    print("Starting startup registry key integrity check")
+    print("Starting startup integrity check")
     with open(scheduler_config_file, "r") as f:
         config = json.load(f)
         if config["startup"] == "0":
-            print("No reg key detected, creating key")
+            print("Startup file not detected, creating")
             add_to_startup()
-            if not type(None) == check_reg_key():
+            if not type(None) == check_startup_file():
                 print("Updating config")
-                config.update({"startup": "1"})
+                config["startup"] = "1"
+                with open(scheduler_config_file, "w") as file:
+                    json.dump(config, file)
         elif config["startup"] == "1":
-            if not type(None) == check_reg_key():
-                print("Reg key detected, passing")
+            if not type(None) == check_startup_file():
+                print("Startup file detected, passing")
                 pass
-            elif type(None) == check_reg_key():
-                print("No reg key detected, creating key")
+            elif type(None) == check_startup_file():
+                print("Startup file not detected, creating")
                 add_to_startup()
         else:
             print("Unknown value set for startup")
     print("Setup file complete, pushing control to main file")
-    system(fr"CMD /c python {getcwd()}\main.py")
+    cwd = '"' + getcwd() + '"'
+    system(fr"CMD /c python {cwd}\main.py")
     exit(0)
 except Exception as exc:
     new_exc = str(exc).split(']')[0].strip('[')

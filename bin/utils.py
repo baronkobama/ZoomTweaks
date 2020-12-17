@@ -1,15 +1,50 @@
 # Zoom Tweaks - Utility Container
 
 # Standard Libraries
+from datetime import datetime
+from getpass import getuser
 from os import getcwd, mkdir, path, system
 import json
-import winreg as reg
+import subprocess
+import win32api
 # External Libraries
 import PySimpleGUI as sg
+
 # Constants
-from bin.constants import (cache_directory, class_amount_file, class_time_file,
-                           class_link_file, scheduler_config_file, reg_path,
-                           address)
+cache_directory = path.join(getcwd(), "cache")
+class_amount_file = path.join(cache_directory, "classAmount.json")
+class_time_file = path.join(cache_directory, "classTimes.json")
+class_link_file = path.join(cache_directory, "classLinks.json")
+clAmountLayout = [[sg.Text("Input the amount of classes you have.")],
+                  [sg.Text("Input the amount as '5' or '6', etc."),
+                   sg.InputText()],
+                  [sg.Button("Ok"), sg.Button("Cancel")],
+                  [sg.Text("*This won't change unless you delete files and reinstall*")]]
+clTimesLayout = []
+clLinksLayout = []
+updated_times_list = []
+now = datetime.now()
+current_time = now.strftime('%H:%M')
+scheduler_config_file = path.join(cache_directory, "schedulerConfig.json")
+startup_path = ""
+drives = win32api.GetLogicalDriveStrings().split('\000')[:-1]
+for drive in drives:
+    startup_path = rf'{drive}Users\{getuser()}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
+    if path.isdir(startup_path):
+        break
+    else:
+        continue
+startup_file = path.join(startup_path, "ZoomTweaks.bat")
+file_path = path.join((path.dirname(path.realpath(__file__)).strip(r"\bin")), "scheduler.py")
+file_path = file_path.split('\\')
+index = -1
+for name in file_path:
+    index += 1
+    if " " in name:
+        file_path[index] = ('"' + name + '"')
+file_path = '\\'.join([str(elem) for elem in file_path])
+
+# Functions
 
 
 def file_reset(file):
@@ -94,26 +129,26 @@ def cache_check():
 
 
 def add_to_startup():
-    try:
-        with reg.OpenKey(reg.HKEY_CURRENT_USER, reg_path, 0, reg.KEY_ALL_ACCESS) as registry_key:
-            reg.SetValueEx(registry_key, "ZoomTweaks", 0, reg.REG_SZ, address)
-            reg.CloseKey(registry_key)
+    python_directories = subprocess.check_output("where python", shell=True)
+    python_directories = str(python_directories).strip('"' + "b" + "'").split(r'\r\n')
+    for directory in python_directories:
+        if 'AppData' not in directory:
+            python_directories.remove(directory)
+        if 'Microsoft' in directory:
+            python_directories.remove(directory)
+    python_dir = python_directories[0]
+    with open(startup_file, "w+") as f:
+        f.writelines("@echo off\n")
+        f.writelines(f'"{python_dir}" "{file_path}"\n')
+        f.writelines("pause")
+        f.close()
+
+
+def check_startup_file():
+    if path.isfile(startup_file):
         return True
-    except WindowsError:
-        print("Caught windows error in add_to_startup()")
+    else:
         return False
-
-
-def check_reg_key():
-    try:
-        with reg.OpenKey(reg.HKEY_CURRENT_USER, reg_path, 0, reg.KEY_READ) as registry_key:
-            value, regtype = reg.QueryValueEx(registry_key, "ZoomTweaks")
-            reg.CloseKey(registry_key)
-            return value
-    except WindowsError:
-        print("Caught windows error in check_reg_key()")
-        raise
-        # return None
 
 
 def job():

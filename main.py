@@ -7,9 +7,9 @@ import time as t
 # External Libraries
 import PySimpleGUI as sg
 # Constants
-from bin.constants import (class_amount_file, class_time_file,
-                           class_link_file, clAmountLayout, clTimesLayout,
-                           updated_times_list, clLinksLayout, current_time)
+from bin.utils import (class_amount_file, class_time_file,
+                       class_link_file, clAmountLayout, clTimesLayout,
+                       updated_times_list, clLinksLayout, current_time)
 # ZoomTweaks-PY Functions
 from bin.utils import (file_reset, retriever, config_file_check, cache_check)
 
