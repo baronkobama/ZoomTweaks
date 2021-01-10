@@ -145,6 +145,10 @@ try:
     while True:
         now = datetime.now()
         current_time = now.strftime('%H:%M')
+        if list(joiner_dict.keys())[-1] == current_time:
+            log.debug("Script runtime finished, returning to scheduler")
+            system(fr"CMD /c python {getcwd()}\scheduler.py")
+            exit(0)
         for key, value in joiner_dict.items():
             if key == current_time:
                 log.debug("Caught proper time, starting link")
@@ -159,10 +163,6 @@ try:
                     log.debug("Check console traceback for more info:")
                     print(f"Check {lfile} for more info (debug log)")
                     raise
-        if list(joiner_dict.keys())[-1] == current_time:
-            log.debug("Script runtime finished, returning to scheduler")
-            system(fr"CMD /c python {getcwd()}\scheduler.py")
-            exit(0)
         t.sleep(60)
 except KeyboardInterrupt:
     log.debug("Exiting due to keyboard interrupt (ctrl + c)...")
