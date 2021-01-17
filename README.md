@@ -6,7 +6,7 @@ Dependencies:
 - PySimpleGUI (pip install PySimpleGUI) 
 - schedule (pip install schedule)
 
-Currently working on restructuring.\
+Currently working on a rewrite of the project (its really messy right now)\
 (To use script run setup.py on first run and main.py if any issues arise after setup)
 
 
@@ -24,7 +24,9 @@ Finished Additions:
 - Verbose Error/Exception Handling (add exception/error handling for all functions)
 
 ETA:
-- Verbose error/exception handling + debug logger + full release = ~ Christmas 2020
-- 2 modes + specific day toggle + chat notifications (MAYBE) + script toggle = ~ Jan-Feb 2021
+- Verbose error/exception handling + debug logger = ~ Christmas 2020
+- Complete Restructure/Rewrite = ~ Jan-Early Feb 2021
+- Release to Beta = ~ Feb 2021
+- 2 modes + specific day toggle + chat notifications (MAYBE) + script toggle = ~ Mar-Apr 2021
 - Mute/unmute zoom toggle + mobile terminal = TBD
 - ****All ETAs listed above are not guaranteed, only rough estimates***

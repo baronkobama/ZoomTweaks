@@ -19,15 +19,20 @@ from bin.logger import log
 
 
 try:
+    # Startup
     proc_init()
     log.debug("Entering main.py")
     frame_info = getframeinfo(currentframe())
     cache_check()
+
+    # Class Amount Retrievers
     retriever(clAmountLayout, class_amount_file)
     if not config_file_check(class_amount_file):
         with open(class_amount_file, "r") as class_amount:
             class_amount_list = json.load(class_amount)
     log.debug(f'Class amount retrieved: [{class_amount_list["0"]}]')
+
+    # Class Times Window Creator/Iterator
     try:
         i = 0
         for _ in range(int(class_amount_list["0"])):
@@ -57,12 +62,16 @@ try:
     clTimesLayout.append([sg.Text
                          ("**Please also ensure that you use standard time**")])
     log.debug("Finished class time layout setup")
+
+    # Class Times Retriever
     retriever(clTimesLayout, class_time_file)
     if not config_file_check(class_time_file):
         with open(class_time_file, "r") as class_times:
             class_times_dict = json.load(class_times)
             class_times_list = list(class_times_dict.values())
     log.debug(f'Class times retrieved: [{class_times_list}]')
+
+    # Begin Military Time Parser
     log.debug("Parsing times into military time")
     for time in class_times_list:
         if "am" in time.lower():
@@ -111,6 +120,8 @@ try:
             file_reset(class_time_file)
             exit(1)
     log.debug("Successfully parsed times into military time")
+
+    # Class Links Window Creator/Iterator
     try:
         i = 0
         for _ in range(int(class_amount_list["0"])):
@@ -122,15 +133,20 @@ try:
         log.debug(str(exc))
         exit(1)
     clLinksLayout.append([sg.Button("Ok"), sg.Button("Cancel")])
+
+    # Class Links Retriever
     retriever(clLinksLayout, class_link_file)
     if not config_file_check(class_link_file):
         with open(class_link_file, "r") as class_links:
             class_links_dict = json.load(class_links)
             class_links_list = list(class_links_dict.values())
     log.debug(f'Class links retrieved: [{class_links_list}]')
+
+    # Begin Joiner Dictionary (blueprint for joining zoom classes)
     joiner_dict = {}
     try:
         i = -1
+        # Append links along with an enumeration system to joiner dictionary
         for link in class_links_list:
             i += 1
             joiner_dict[updated_times_list[i]] = link
@@ -139,6 +155,8 @@ try:
         log.debug("Wrote joiner dictionary")
     except Exception as exc:
         raise
+
+    # Enter ZoomTweaks idle waiter
     sg.Popup("Now entering sleep mode...", title="ZoomTweaks-PY-v2.0.0-beta.py",
              auto_close=True, auto_close_duration=5)
     log.debug("Entering zoomtweaks waiter")
